@@ -50,7 +50,7 @@ ERL_INTERFACE_LIB_DIR ?= $(shell erl -noshell -noinput -eval "io:format(\"~ts\",
 
 ifdef NIF
 	DEFINES += -DNIF
-	CFLAGS += -I $(ERTS_INCLUDE_DIR) -I $(ERL_INTERFACE_INCLUDE_DIR)
+	CFLAGS += $(ERTS_INCLUDE_DIR) -I $(ERL_INTERFACE_INCLUDE_DIR)
 	LDFLAGS += -L $(ERL_INTERFACE_LIB_DIR) -lei
 endif
 
