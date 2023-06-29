@@ -44,9 +44,9 @@ CACHEGRIND=valgrind --tool=cachegrind
 MASSIF=valgrind --tool=massif
 TIDY=clang-tidy
 
-ERTS_INCLUDE_DIR ?= $(shell erl -noshell -s init stop -eval "io:format(\"~ts/erts-~ts/include/\", [code:root_dir(), erlang:system_info(version)]).")
-ERL_INTERFACE_INCLUDE_DIR ?= $(shell erl -noshell -s init stop -eval "io:format(\"~ts\", [code:lib_dir(erl_interface, include)]).")
-ERL_INTERFACE_LIB_DIR ?= $(shell erl -noshell -s init stop -eval "io:format(\"~ts\", [code:lib_dir(erl_interface, lib)]).")
+ERTS_INCLUDE_DIR ?= $(shell erl -noshell -noinput -eval "io:format(\"-I~ts/erts-~ts/include -I~ts\", [code:root_dir(), erlang:system_info(version), code:lib_dir(erl_interface, include)]), halt(0).")
+ERL_INTERFACE_INCLUDE_DIR ?= $(shell erl -noshell -noinput -eval "io:format(\"~ts\", [code:lib_dir(erl_interface, include)]), halt(0).")
+ERL_INTERFACE_LIB_DIR ?= $(shell erl -noshell -noinput -eval "io:format(\"~ts\", [code:lib_dir(erl_interface, lib)]), halt(0).")
 
 ifdef NIF
 	DEFINES += -DNIF
