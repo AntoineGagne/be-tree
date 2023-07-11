@@ -2564,6 +2564,7 @@ bool all_exprs_valid(const struct config* config, const struct ast_node* node)
             enum betree_value_type_e var_type = config->attr_domains[node->compare_expr.attr_var.var]->bound.value_type;
             enum ast_compare_value_e val_type = node->compare_expr.value.value_type;
             return (var_type == BETREE_INTEGER && val_type == AST_COMPARE_VALUE_INTEGER)
+                || (var_type == BETREE_INTEGER_ENUM && val_type == AST_EQUALITY_VALUE_INTEGER_ENUM)
                 || (var_type == BETREE_FLOAT && val_type == AST_COMPARE_VALUE_FLOAT);
         }
         case AST_TYPE_EQUALITY_EXPR: {
