@@ -2,6 +2,7 @@
 # Variables
 ################################################################################
 
+CC := clang
 UNAME := $(shell uname)
 
 CFLAGS := -O3 -g -std=gnu11 -Wall -Wextra -Wshadow -Wfloat-equal -Wundef -Wcast-align \
